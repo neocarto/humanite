@@ -8,5 +8,36 @@
     Toutes les sources sont disponibles ici : https://github.com/neocarto/humanite
 
     Voir aussi : https://observablehq.com/@neocarto/-/collection/lhumanite
+
+    <hr/>
+  </script>
+
+  <script type="module">
+    const prefix = "https://neocarto.github.io/humanite/";
+    const maps = [{ folder: "test", name: "map1", title: "carte de test" }];
+    const byFolder = d3.group(maps, (d) => d.folder);
+    display(
+      html`<div>
+        ${Array.from(
+          byFolder,
+          ([folder, items]) =>
+            html`<section>
+              <h3>${folder}</h3>
+              <ul>
+                ${items.map(
+                  (map) =>
+                    html`<li>
+                      <a
+                        href="${prefix}${map.folder}/${map.name}.html"
+                        target="_blank"
+                        >${map.title}</a
+                      >
+                    </li>`,
+                )}
+              </ul>
+            </section>`,
+        )}
+      </div>`,
+    );
   </script>
 </notebook>
