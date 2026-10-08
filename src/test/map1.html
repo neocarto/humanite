@@ -62,24 +62,4 @@
       main.style.setProperty("max-width", "none", "important");
     }
   </script>
-
-  <script type="module">
-    const sendHeight = () => {
-      const height = document.documentElement.scrollHeight;
-
-      window.parent.postMessage(
-        {
-          type: "notebook-height",
-          height,
-        },
-        "*",
-      );
-    };
-
-    const observer = new ResizeObserver(sendHeight);
-
-    observer.observe(document.body);
-
-    window.addEventListener("load", sendHeight);
-  </script>
 </notebook>
