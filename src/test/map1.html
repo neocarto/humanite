@@ -1,5 +1,12 @@
 <!doctype html>
 
+<style>
+  html body main {
+    width: 100% !important;
+    max-width: none !important;
+  }
+</style>
+
 <notebook>
   <script id="imports" type="module" hidden>
     import * as viz from "npm:geoviz@1";
@@ -42,5 +49,14 @@
 
   <script type="module" hidden>
     display(svg.render({ order: [toto] }));
+  </script>
+
+  <script type="module">
+    const main = document.querySelector("main");
+
+    if (main) {
+      main.style.setProperty("width", "100%", "important");
+      main.style.setProperty("max-width", "none", "important");
+    }
   </script>
 </notebook>
