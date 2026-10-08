@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Carte interactive</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        background: #f2f2f2;
+      }
+
+      .content {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      /*
+     * Conteneur responsive de la carte
+     */
+      #map {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        margin: 2rem 0;
+      }
+
+      /*
+     * L'iframe occupe exactement le conteneur
+     */
+      #map iframe {
+        position: absolute;
+        inset: 0;
+
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="content">
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </div>
+
+      <div id="map"></div>
+
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </div>
+    </main>
+
+    <script>
+      const url = "https://neocarto.github.io/humanite/test/map1.html";
+
+      const container = document.querySelector("#map");
+
+      const iframe = document.createElement("iframe");
+
+      iframe.src = url;
+      iframe.title = "Carte interactive";
+
+      container.appendChild(iframe);
+    </script>
+  </body>
+</html>
