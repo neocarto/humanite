@@ -1,0 +1,44 @@
+<!doctype html>
+<notebook>
+  <script id="imports" type="module" hidden>
+    import * as viz from "npm:geoviz@1";
+  </script>
+
+  <script type="module" hidden>
+    let world = FileAttachment("../../data/world.json").json();
+  </script>
+
+  <script type="module">
+    const r = view(
+      Inputs.range([10, 100], { value: 50, step: 1, label: "Radius" }),
+    );
+    const dodge = view(Inputs.toggle({ value: false, label: "Dodge" }));
+  </script>
+
+  <script id="simple map" type="module" hidden>
+    let svg = viz.create({
+      projection: "NaturalEarth1",
+      zoomable: true,
+    });
+    svg.outline();
+    svg.graticule({ stroke: "white", step: 30 });
+    svg.path({ datum: world, fill: "white", fillOpacity: 0.3 });
+    svg.header({ text: "Hello geoviz" });
+  </script>
+
+  <script type="module">
+    let toto = svg.prop({
+      id: "pop",
+      data: world,
+      var: "pop",
+      fill: "red",
+      fillOpacity: 0.7,
+      dodge,
+      k: r,
+    });
+  </script>
+
+  <script type="module" hidden>
+    display(svg.render({ order: [toto] }));
+  </script>
+</notebook>
